@@ -43,16 +43,16 @@ REGIONES = [
         "lang": "eng"
     },
 
-    {
-        "nombre": "Modo Manual",
-        "region": (380, 730, 280, 90),
-        "palabras": ["MAN"],
-        "tecla": "u",
-        "min_match": 1,          
-        "cooldown": 1.0,
-        "psm": 7,
-        "lang": "eng"
-    },
+#    {
+#        "nombre": "Modo Manual",
+#        "region": (380, 730, 280, 90),
+#        "palabras": ["MAN"],
+#        "tecla": "u",
+#        "min_match": 1,          
+#        "cooldown": 1.0,
+#        "psm": 7,
+#        "lang": "eng"
+#    },
 
     {
         "nombre": "Terminar edicion",
@@ -69,9 +69,9 @@ REGIONES = [
 
     {
         "nombre": "Saque de Centro",
-        "region": (810, 890, 300, 80),
-        "palabras": ["SAQUE", "CENTRO","REA"],
-        "min_match": 1,    
+        "region": (810, 890, 300, 90),
+        "palabras": ["SAQUE", "CENTRO", "RE"],
+        "min_match": 1,
         "click": True,
         "click_pos": "center",
         "click_tipo": "left",
@@ -80,6 +80,7 @@ REGIONES = [
         "psm": 7,
         "lang": "eng"
     },
+
 
     {
         "nombre": "Luz eterna",
