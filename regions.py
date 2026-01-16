@@ -5,7 +5,8 @@ REGIONES = [
         "palabras": ["EMP", "PART", "PULSA", "BOTON"],
         "min_match": 1,        
         "tecla": "enter",
-        "cooldown": 1.0,
+        "cooldown": 0.1
+        ,
         "psm": 7,
         "lang": "eng"
     },
@@ -15,7 +16,7 @@ REGIONES = [
         "region": (480, 600, 300, 80),
         "palabras": ["SI"],
         "tecla": "enter",
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
@@ -27,7 +28,7 @@ REGIONES = [
         "repetir_texto": True,
         "min_match": 1,            
         "tecla": "enter",
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
@@ -36,33 +37,24 @@ REGIONES = [
         "nombre": "Siguiente / Finalizar",
         "region": (1570, 900, 320, 80),
         "palabras": ["SIGUIENTE", "FINALIZAR", "PARTIDO"],
+        "min_match": 1,         
         "repetir_texto": True,
         "tecla": "enter",
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
-
-#    {
-#        "nombre": "Modo Manual",
-#        "region": (380, 730, 280, 90),
-#        "palabras": ["MAN"],
-#        "tecla": "u",
-#        "min_match": 1,          
-#        "cooldown": 1.0,
-#        "psm": 7,
-#        "lang": "eng"
-#    },
 
     {
         "nombre": "Terminar edicion",
         "region": (230, 960, 400, 90),
         "palabras": ["TERMINAR", "EDICION"],
+        "repetir_texto": True,
         "click": True,
         "click_pos": "center",
         "click_tipo": "left",
         "click_delay": 0.1,
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
@@ -70,25 +62,25 @@ REGIONES = [
     {
         "nombre": "Saque de Centro",
         "region": (810, 890, 300, 90),
-        "palabras": ["SAQUE", "CENTRO", "RE"],
+        "palabras": ["SAQUE", "CENTRO"],
         "min_match": 1,
         "click": True,
         "click_pos": "center",
         "click_tipo": "left",
         "click_delay": 0.1,
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
 
 
     {
-        "nombre": "Luz eterna",
-        "region": (890, 340, 160, 40),
-        "palabras": ["LUZ", "ETER"],
+        "nombre": "Equipo rival",
+        "region": (880, 340, 180, 40),
+        "palabras": ["ZAN", "DOM"],
         "min_match": 1,          
         "tecla": "enter",
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },    
@@ -103,7 +95,7 @@ REGIONES = [
         "click_pos": (415, 780),
         "click_tipo": "left",
         "click_delay": 0.1,
-        "cooldown": 1.0,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },        

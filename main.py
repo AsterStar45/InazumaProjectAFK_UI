@@ -43,7 +43,7 @@ saque_tecla_hecha = False
 
 print("BOT OCR INICIADO")
 print("Presiona ESC para salir")
-time.sleep(2)
+time.sleep(1)
 
 # =========================
 # LOOP PRINCIPAL
@@ -76,16 +76,31 @@ while True:
 
         cv2.imshow(r["nombre"], gray)
         cv2.waitKey(1)
-
+        print(f"[DEBUG] Region: {r['nombre']} | Texto detectado: '{texto}'")
+        
         # =========================
-        # SAQUE DE CENTRO (ESTADO)
+        # SAQUE DE CENTRO / REANUDAR
         # =========================
         if r["nombre"] == "Saque de Centro":
             ahora = time.time()
-            detectado = ("SAQUE" in texto) or ("CENTRO" in texto)
 
-            # Iniciar estado solo una vez
-            if detectado and not saque_estado_activo:
+            detecta_saque = ("SAQUE" in texto) or ("CENTRO" in texto)
+            detecta_reanudar = "REANUDAR" in texto
+
+            # ---- REANUDAR: solo click, sin estado ----
+            if detecta_reanudar:
+                pos = obtener_pos_click(r["region"], r.get("click_pos", "center"))
+                if pos:
+                    print(">>> CLICK REANUDAR")
+                    pyautogui.click(
+                        x=pos[0],
+                        y=pos[1],
+                        button=r.get("click_tipo", "left")
+                    )
+                continue
+
+            # ---- SAQUE DE CENTRO: logica con estado ----
+            if detecta_saque and not saque_estado_activo:
                 print(">>> SAQUE DE CENTRO DETECTADO")
                 saque_estado_activo = True
                 saque_detectado_en = ahora
@@ -110,7 +125,7 @@ while True:
                         pyautogui.press("u")
                         saque_tecla_hecha = True
 
-                # Reset completo cuando termina
+                # Reset completo
                 if saque_click_hecho and saque_tecla_hecha:
                     saque_estado_activo = False
                     saque_detectado_en = None
@@ -149,6 +164,8 @@ while True:
                 time.sleep(r.get("click_delay", 0))
                 pyautogui.press(r["tecla"])
 
+
     time.sleep(0.1)
+
 
 cv2.destroyAllWindows()
