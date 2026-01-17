@@ -10,17 +10,24 @@ from PySide6.QtWidgets import (
     QApplication
 )
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
 import sys
-
 from core.regions import REGIONES
 from core.bot_worker import BotWorker
+import os
 
+def resource_path(relative_path):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Inazuma AFK Bot")
+        icon_path = os.path.join(os.path.dirname(__file__), "..", "assets", "icon.ico")
+        self.setWindowTitle("InazumaAFK")
+        self.setWindowIcon(QIcon(resource_path("assets/icon.ico")))
 
         # ===== Ajustar a 3/4 de pantalla =====
         screen = QApplication.primaryScreen().availableGeometry()

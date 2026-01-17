@@ -1,19 +1,18 @@
 REGIONES = [
     {
         "nombre": "Empezar Partido",
-        "region": (790, 950, 350, 80),
+        "region": (0.411, 0.880, 0.182, 0.074),
         "palabras": ["EMP", "PART", "PULSA", "BOTON"],
         "min_match": 1,        
         "tecla": "enter",
-        "cooldown": 0.1
-        ,
+        "cooldown": 0.1,
         "psm": 7,
         "lang": "eng"
     },
 
     {
         "nombre": "Confirmar Si",
-        "region": (480, 600, 300, 80),
+        "region": (0.250, 0.556, 0.156, 0.074),
         "palabras": ["SI"],
         "tecla": "enter",
         "cooldown": 0.1,
@@ -23,7 +22,7 @@ REGIONES = [
     
     {
         "nombre": "Comenzar 2da Parte",
-        "region": (1568, 960, 200, 70),
+        "region": (0.817, 0.889, 0.104, 0.065),
         "palabras": ["COM", "SIG", "FIN"],
         "repetir_texto": True,
         "min_match": 1,            
@@ -31,12 +30,11 @@ REGIONES = [
         "cooldown": 0.1,
         "psm": 6,
         "lang": "eng"
-        
     },
 
     {
         "nombre": "Siguiente / Finalizar",
-        "region": (1570, 900, 320, 80),
+        "region": (0.818, 0.833, 0.167, 0.074),
         "palabras": ["SIGUIENTE", "FINALIZAR", "PARTIDO"],
         "min_match": 1,         
         "repetir_texto": True,
@@ -48,7 +46,7 @@ REGIONES = [
 
     {
         "nombre": "Terminar edicion",
-        "region": (230, 960, 400, 90),
+        "region": (0.120, 0.889, 0.208, 0.083),
         "palabras": ["TERMINAR", "EDICION"],
         "repetir_texto": True,
         "click": True,
@@ -62,7 +60,7 @@ REGIONES = [
 
     {
         "nombre": "Saque de Centro",
-        "region": (980, 890, 140, 90),
+        "region": (0.510, 0.824, 0.073, 0.083),
         "palabras": ["CENT"],
         "repetir_texto": False,
         "min_match": 1,
@@ -75,15 +73,14 @@ REGIONES = [
         "lang": "eng"
     },
 
-
     {
         "nombre": "Equipo rival",
-        "region": (880, 340, 180, 40),
+        "region": (0.458, 0.315, 0.094, 0.037),
         "palabras": ["LUZ", "ETE"],
         "min_match": 1,          
         "repetir_texto": False,
         "click": True,
-        "click_pos": (950, 515),
+        "click_pos": (0.495, 0.477),
         "click_tipo": "left",
         "click_delay": 0.1,
         "cooldown": 0.1,
@@ -93,12 +90,12 @@ REGIONES = [
 
     {
         "nombre": "Batalla heroica",
-        "region": (250, 480, 120, 60),
+        "region": (0.130, 0.444, 0.063, 0.056),
         "palabras": ["PLAN"],     
         "min_match": 1,             
         "repetir_texto": True,
         "click": True,
-        "click_pos": (415, 780),
+        "click_pos": (0.216, 0.722),
         "click_tipo": "left",
         "click_delay": 0.5,
         "cooldown": 0.5,

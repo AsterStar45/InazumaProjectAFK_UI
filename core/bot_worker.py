@@ -31,11 +31,14 @@ class BotWorker(QThread):
         self.running = False
 
     def obtener_pos_click(self, region, click_pos):
-        x, y, w, h = region
+        x, y, w, h = self.region_px(region)
+
         if click_pos == "center":
             return x + w // 2, y + h // 2
+
         if isinstance(click_pos, tuple):
-            return click_pos
+            return self.punto_px(click_pos)
+
         return None
 
     def puede_procesar_region(self, nombre, texto, repetir):
@@ -43,14 +46,30 @@ class BotWorker(QThread):
             return True
         return texto != self.ultimo_texto.get(nombre)
 
+    def region_px(self, region):
+        sw, sh = pyautogui.size()
+        x, y, w, h = region
+        return (
+            int(x * sw),
+            int(y * sh),
+            int(w * sw),
+            int(h * sh),
+        )
+
+
+    def punto_px(self, punto):
+        sw, sh = pyautogui.size()
+        x, y = punto
+        return int(x * sw), int(y * sh)
+
     def run(self):
         self.log.emit("BOT INICIADO")
 
         while self.running:
             for r in REGIONES:
-                x, y, w, h = r["region"]
-
+                x, y, w, h = self.region_px(r["region"])
                 screenshot = pyautogui.screenshot(region=(x, y, w, h))
+
                 frame = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
 
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
