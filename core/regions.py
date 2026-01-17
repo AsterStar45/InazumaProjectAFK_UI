@@ -64,6 +64,7 @@ REGIONES = [
         "nombre": "Saque de Centro",
         "region": (980, 890, 140, 90),
         "palabras": ["CENT"],
+        "repetir_texto": False,
         "min_match": 1,
         "click": True,
         "click_pos": "center",
