@@ -1,153 +1,156 @@
 # InazumaAFK
 
-Bot automático basado en **OCR (reconocimiento de texto en pantalla)** para automatizar acciones repetitivas dentro del juego.  
-El bot detecta textos en regiones específicas de la pantalla y responde con clics o teclas según reglas configurables.
+Automatic bot based on **OCR (screen text recognition)** to automate repetitive actions within the game (Inazuma Eleven Victory Road).  
+The bot detects text in specific regions of the screen and responds with clicks or keystrokes based on configurable rules.
 
-La aplicación cuenta con:
-- Motor OCR usando Tesseract
-- Automatización con PyAutoGUI
-- Interfaz gráfica en PySide6
-- Soporte para distintas resoluciones
+The application includes:
+- OCR engine using Tesseract  
+- Automation using PyAutoGUI  
+- Graphical interface built with PySide6  
+- Support for automated workflows based on screen detection  
 
 ---
 
-## Requisitos
+## Requirements
 
 ### 1. Python
-Versión recomendada: **Python 3.10 o superior**
+Recommended version: **Python 3.10 or higher**
 
-Verifica tu versión:
+Check your version:
 ```bash
 python --version
 ```
 
 ---
 
-### 2. Tesseract OCR (OBLIGATORIO)
+### 2. Tesseract OCR (REQUIRED)
 
-El bot **NO funciona sin Tesseract instalado**.
+The bot **will NOT work without Tesseract installed**.
 
-#### Descargar Tesseract (Windows)
-Repositorio oficial:  
-https://github.com/UB-Mannheim/tesseract/wiki
+#### Download Tesseract (Windows)
+Official repository:  
+https://github.com/UB-Mannheim/tesseract/wiki  
 
-Instala la versión para Windows (64 bits).
+Install the Windows version (64-bit).
 
-Durante la instalación:
-- Marca la opción **Add Tesseract to PATH**
-- Idioma recomendado: English
+During installation:
+- Check the option **Add Tesseract to PATH**
+- Recommended language: English
 
-Ruta por defecto usada en el proyecto:
+Default path used in the project:
 ```txt
-C:\Program Files\Tesseract-OCR\tesseract.exe
+C:\Program Files\Tesseract-OCR	esseract.exe
 ```
 
-Si instalas en otra ruta, debes modificarla en el código.
+If you install it in a different location, you must update the path in the code.
 
 ---
 
-### 3. Dependencias del proyecto
+### 3. Project Dependencies
 
-Instala las dependencias con:
+Install dependencies with:
 ```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Uso del bot (MUY IMPORTANTE)
+## Using the Bot (VERY IMPORTANT)
 
-### Ejecutar como administrador
-Para que el bot pueda:
-- Leer correctamente la pantalla
-- Enviar teclas
-- Hacer clics sobre el juego
+### Run as Administrator
+For the bot to properly:
+- Read the screen  
+- Send keystrokes  
+- Perform clicks on the game  
 
-**Debes ejecutar el programa como administrador**, tanto el `.exe` como el `.py` si vas a modificar el código.
+**You must run the program as administrator**, both the `.exe` and the `.py` file if you plan to modify the code.
 
 ---
 
-### Configuración del Equipo Rival
+### Opponent Team Configuration
 
-En la interfaz gráfica existe un campo llamado **Equipo rival**.
+In the graphical interface, there is a field called **Opponent Team**.
 
-Debes escribir el nombre del equipo rival usando:
-- Letras en MAYÚSCULA
-- Separadas por comas
-- Usando solo las primeras 2 o 3 letras de cada palabra
+You must enter the opponent team name using:
+- UPPERCASE letters  
+- Comma-separated  
+- Only the first 2 or 3 letters of each word  
 
-#### Ejemplo
+#### Example
 
-Equipo:
+Team:
 ```
 Luz Eterna
 ```
 
-Opciones válidas:
+Valid inputs:
 ```
 LUZ,ETE
 LU,ET
 ```
 
-Recomendación:
-- Empieza con 3 letras
-- Si el OCR falla, prueba con 2
+Recommendation:
+- Start with 3 letters  
+- If OCR detection fails, try 2  
 
-Esto se usa para detectar el texto del equipo rival en pantalla mediante OCR.
-
----
-
-### Pasos para usar el bot correctamente
-
-1. Ejecuta el programa **como administrador**
-2. Escribe el **Equipo rival** en el campo correspondiente
-3. Abre el juego
-4. Entra al partido del equipo rival correspondiente
-5. Presiona **Iniciar bot**
-7. Deja el juego en **primer plano** (no minimizado)
-8. No muevas la ventana del juego mientras el bot esté activo
-
-Si todo está bien configurado, el bot funcionará automáticamente.
+This is used to detect the opponent team text on screen via OCR.
 
 ---
 
-## Resolución de pantalla
+### Steps to Use the Bot Correctly
 
-Las regiones del bot están definidas en **porcentajes**, no en píxeles fijos.
+1. Run the program **as administrator**  
+2. Enter the **Opponent Team** in the corresponding field  
+3. Open the game  
+4. Enter a match with the specified opponent team  
+5. Press **Start bot**  
+6. Keep the game in the **foreground** (not minimized)  
+7. Do not move the game window while the bot is running  
 
-Esto permite que el bot funcione en todas las resoluciones, como por ejemplo:
-- 1920x1080
-- 1366x768
-- 2560x1440
-
-Aun así:
-- El juego debe estar en pantalla completa o modo ventana sin bordes
-- No se recomienda cambiar la resolución mientras el bot esté activo
+If everything is configured correctly, the bot will work automatically.
 
 ---
 
-## Crear el ejecutable
+## Screen Resolution (IMPORTANT)
 
-El proyecto puede compilarse en un solo `.exe` usando PyInstaller.
+⚠️ This bot is designed to work **ONLY in 1920x1080 resolution**.
 
-Comando recomendado (PowerShell en una sola línea):
+Due to how the game handles resolution changes:
+- UI elements shift when the resolution changes  
+- Button positions are no longer consistent  
+
+Because of this:
+- The bot relies on fixed relative positions  
+- Changing resolution WILL break functionality  
+
+### Requirements:
+
+- Set your game resolution to **1920x1080**
+- Use fullscreen or borderless window mode  
+- Do not change resolution while the bot is running  
+
+---
+
+## Build the Executable
+
+The project can be compiled into a single `.exe` using PyInstaller.
+
+Recommended command (PowerShell, single line):
 ```powershell
 pyinstaller --onefile --windowed --name InazumaAFK --icon assets/icon.ico --add-data "assets/icon.ico;assets" main.py
 ```
 
-El ejecutable final se generará en:
+The final executable will be generated at:
 ```
 dist/InazumaAFK.exe
 ```
 
 ---
 
-## Notas importantes
+## Important Notes
 
-- El OCR no es perfecto, por eso se usan coincidencias parciales
-- Si una región falla, ajusta las palabras clave
-- No ejecutes el bot en segundo plano
-- No minimices el juego
-- Solo hay soporte para idioma del juego en Español
-
----
+- OCR is not perfect, so partial matching is used  
+- If detection fails, adjust the keywords  
+- Do not run the bot in the background  
+- Do not minimize the game  
+- Only Spanish language support is currently available for the game  
